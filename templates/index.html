@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+Search for a book<br>
+<form action="/" method="POST" id="search">
+    <div>
+        <input class="form-control" name="search" type="text" placeholder="ISBN, title or author"><br>
+    </div>
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
+{{ message }}
+<div>
+    <ul>
+        {% for book in books %}
+            <a href="{{ url_for('book', book_id=book.id) }}">
+                <li>ISBN: {{book.ISBN}}, Title: {{book.title}}, Author: {{book.author}}, publishing year: {{book.year}}</li>
+            </a>        
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

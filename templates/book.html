@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book
+{% endblock %}
+
+{% block main %}
+<div>
+        Title: {{book.title}}<br>
+        Author: {{book.author}}<br>
+        Publishing year: {{book.year}}<br>
+        Goodreads rating: {{rating.average_rating}}<br>
+        Goodreads rating count: {{rating.work_ratings_count}}<br><br>
+</div>
+<form action= "{{ url_for('book', book_id=book.id) }}" method="POST">
+        <div class="form-group">
+            Rating: 
+            <select name="score" id="rating">
+                <option value="1"> 1 star </option>
+                <option value="2"> 2 star </option>
+                <option value="3"> 3 star </option>
+                <option value="4"> 4 star </option>
+                <option value="5"> 5 star </option>
+            </select>
+        </div>
+        <div class="form-group">
+            Leave your review below:<br>
+            <textarea name="review">Your review here</textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    <div>
+        {{message}}
+    </div>
+{% endblock %}
