@@ -2,6 +2,7 @@
 
 {% block title %}
     Book
+    <script src="{{ url_for('static', filename='review.js') }}"></script>
 {% endblock %}
 
 {% block main %}
@@ -12,7 +13,7 @@
         Goodreads rating: {{rating.average_rating}}<br>
         Goodreads rating count: {{rating.work_ratings_count}}<br><br>
 </div>
-<form action= "{{ url_for('book', book_id=book.id) }}" method="POST">
+<form action= "{{ url_for('book', book_id=book.id) }}" method="POST" id="review">
         <div class="form-group">
             Rating: 
             <select name="score" id="rating">
@@ -25,11 +26,11 @@
         </div>
         <div class="form-group">
             Leave your review below:<br>
-            <textarea name="review">Your review here</textarea>
+            <textarea name="review" id="text">Your review here</textarea>
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
     </form>
-    <div>
+    <div id="message">
         {{message}}
     </div>
 {% endblock %}

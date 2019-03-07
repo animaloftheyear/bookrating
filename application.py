@@ -135,6 +135,5 @@ def api(isbn):
     else:
         res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "5M9fIVSIHbpYFFc9N1FA", "isbns": book.isbn})
         rating = res.json()['books'][0]
-        print(rating)
         return jsonify({"title": book.title, "author": book.author, "year": book.year, "isbn": isbn, "review_count": rating["work_ratings_count"], "average_score": rating["average_rating"]})
 
